@@ -1,4 +1,4 @@
 services:
-#    core.example:
-#        class: CoreBundle\Example
+#    archery.example:
+#        class: ArcheryBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]

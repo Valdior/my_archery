@@ -19,6 +19,9 @@ class AppKernel extends Kernel
             
             new FOS\UserBundle\FOSUserBundle(),
             new UserBundle\UserBundle(),
+            new ArcheryBundle\ArcheryBundle(),
+            new TournamentBundle\TournamentBundle(),
+            new LocationBundle\LocationBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
