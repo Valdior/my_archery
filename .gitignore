@@ -16,6 +16,7 @@
 /vendor/
 /web/bundles/
 /web/assets/
+/web/font-awesome/
 /bin
 /nbproject
 /tests
