@@ -3,6 +3,8 @@
 namespace ArcheryBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Club
@@ -41,7 +43,17 @@ class Club
      * @ORM\Column(name="number", type="integer", unique=true)
      */
     private $number;
-
+    
+    /**
+     * @Gedmo\Slug(fields={"number", "acronym"})
+     * @ORM\Column(name="slug", type="string", length=20, unique=true)
+     */
+    private $slug;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="ArcheryBundle\Entity\Affiliate", mappedBy="club")
+     */
+    private $membres;   
 
     /**
      * Get id
@@ -124,5 +136,69 @@ class Club
     {
         return $this->number;
     }
-}
 
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Club
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->membres = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add membre
+     *
+     * @param \ArcheryBundle\Entity\Affiliate $membre
+     *
+     * @return Club
+     */
+    public function addMembre(\ArcheryBundle\Entity\Affiliate $membre)
+    {
+        $this->membres[] = $membre;
+
+        return $this;
+    }
+
+    /**
+     * Remove membre
+     *
+     * @param \ArcheryBundle\Entity\Affiliate $membre
+     */
+    public function removeMembre(\ArcheryBundle\Entity\Affiliate $membre)
+    {
+        $this->membres->removeElement($membre);
+    }
+
+    /**
+     * Get membres
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMembres()
+    {
+        return $this->membres;
+    }
+}

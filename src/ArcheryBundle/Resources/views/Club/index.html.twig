@@ -1,6 +1,14 @@
 {% extends "ArcheryBundle::layout.html.twig" %}
 
-{% block body %}
+{% block title %}Cercle - {{ parent() }}{% endblock %}
+
+{% block archery_content %}
     <h3>Liste des cercles</h3>
-    <p>je suis dans les clubs</p>
+    <ul>
+        {% for club in clubs %}
+        <li>
+            <a href="{{ path('club_view', {'slug': club.slug}) }}">{{ club.number }} - {{ club.acronym }} - {{ club.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

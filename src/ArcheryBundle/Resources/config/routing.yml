@@ -1,4 +1,8 @@
    
 club_homepage:
     path:     /club
-    defaults: { _controller: ArcheryBundle:Club:index }    
+    defaults: { _controller: ArcheryBundle:Club:index }  
+    
+club_view:
+    path:     /club/{slug}
+    defaults: { _controller: ArcheryBundle:Club:view }       

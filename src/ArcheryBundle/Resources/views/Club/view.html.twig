@@ -1,0 +1,14 @@
+{% extends "ArcheryBundle::layout.html.twig" %}
+
+{% block title %}{{ club.number }} - {{ club.name }} - {{ parent() }}{% endblock %}
+
+{% block archery_content %}
+    <h3>{{ club.number }} - {{ club.name }}</h3>
+    <h4>Contact</h4>
+    <h4>Liste des archés inscrit</h4>
+    <ul>
+        {% for membre in club.membres %}
+        <li>{{ membre.archer.fullname }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
