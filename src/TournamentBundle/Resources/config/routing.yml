@@ -1,3 +1,7 @@
 tournament_homepage:
     path:     /
-    defaults: { _controller: TournamentBundle:Default:index }
+    defaults: { _controller: TournamentBundle:Tournament:index }
+    
+tournament_view:
+    path:     /{id}
+    defaults: { _controller: TournamentBundle:Tournament:view }    

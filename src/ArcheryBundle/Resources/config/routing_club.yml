@@ -1,0 +1,7 @@
+club_homepage:
+    path:     /
+    defaults: { _controller: ArcheryBundle:Club:index }  
+    
+club_view:
+    path:     /{slug}
+    defaults: { _controller: ArcheryBundle:Club:view }  

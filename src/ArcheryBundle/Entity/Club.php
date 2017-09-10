@@ -201,4 +201,9 @@ class Club
     {
         return $this->membres;
     }
+    
+    public function getFullName()
+    {
+        return $this->number . ' - ' . $this->acronym . ' - ' . $this->name;
+    }
 }

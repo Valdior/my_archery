@@ -1,0 +1,51 @@
+{% extends "ArcheryBundle::layout.html.twig" %}
+
+{% block title %}{{ archer.fullname }} - {{ parent() }}{% endblock %}
+
+{% block archery_content %}
+    <h3>{{ archer.fullname }}</h3>
+    
+    <div class="col-lg-6">
+        <h4>Historique des compétitions</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Organisateur</th>
+                    <th>Date</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for affiliate in archer.affiliates %}
+                <tr>
+                    <td><a href="{{ path('club_view', {'slug': affiliate.club.slug}) }}">{{ affiliate.club.name }}</a></td>
+                    <td>{{ affiliate.affiliatedSince|date("d/m/Y") }}</td>    
+                    <td>{% if affiliate.affiliatedEnd is null %}Actif{% else %}{{ affiliate.affiliatedEnd|date("d/m/Y") }}{% endif %}</td>    
+                </tr>  
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="col-lg-6">
+        <h4>Historique des cercles</h4>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Club</th>
+                    <th>Date Début</th>
+                    <th>Date Fin</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for affiliate in archer.affiliates %}
+                <tr>
+                    <td><a href="{{ path('club_view', {'slug': affiliate.club.slug}) }}">{{ affiliate.club.name }}</a></td>
+                    <td>{{ affiliate.affiliatedSince|date("d/m/Y") }}</td>    
+                    <td>{% if affiliate.affiliatedEnd is null %}Actif{% else %}{{ affiliate.affiliatedEnd|date("d/m/Y") }}{% endif %}</td>    
+                </tr>  
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

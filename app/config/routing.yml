@@ -13,8 +13,8 @@ fos_user:
 
 location:
     resource: "@LocationBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /location
 
 tournament:
     resource: "@TournamentBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /tournament

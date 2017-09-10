@@ -1,0 +1,7 @@
+archer_homepage:
+    path:     /
+    defaults: { _controller: ArcheryBundle:Archer:index } 
+
+archer_view:
+    path:     /{slug}
+    defaults: { _controller: ArcheryBundle:Archer:view }  

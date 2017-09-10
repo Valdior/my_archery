@@ -1,0 +1,14 @@
+{% extends "ArcheryBundle::layout.html.twig" %}
+
+{% block title %}Archer - {{ parent() }}{% endblock %}
+
+{% block archery_content %}
+    <h3>Liste des archers</h3>
+    <ul>
+        {% for archer in archers %}
+        <li>
+            <a href="{{ path('archer_view', {'slug': archer.slug}) }}">{{ archer.fullname }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -55,6 +55,12 @@ class Archer
      * @ORM\OneToMany(targetEntity="ArcheryBundle\Entity\Affiliate", mappedBy="archer")
      */
     private $affiliates;
+    
+    /**
+     * @Gedmo\Slug(fields={"lastname"})
+     * @ORM\Column(name="slug", type="string", length=50, unique=true)
+     */
+    private $slug;
 
     /**
      * Get id
@@ -211,5 +217,29 @@ class Archer
     public function getAffiliates()
     {
         return $this->affiliates;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Archer
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

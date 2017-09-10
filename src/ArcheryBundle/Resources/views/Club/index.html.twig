@@ -7,7 +7,7 @@
     <ul>
         {% for club in clubs %}
         <li>
-            <a href="{{ path('club_view', {'slug': club.slug}) }}">{{ club.number }} - {{ club.acronym }} - {{ club.name }}</a>
+            <a href="{{ path('club_view', {'slug': club.slug}) }}">{{ club.fullname }}</a>
         </li>
         {% endfor %}
     </ul>
