@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Peloton
 {
+    const TYPE_50_30 = '50/30';
+    const TYPE_2_70 = '2x70';
+    const TYPE_2_50 = '2x50';
+    const TYPE_2_25 = '2x25';
+    const TYPE_18 = '18';
+    
     /**
      * @var int
      *
@@ -92,6 +98,10 @@ class Peloton
      */
     public function setType($type)
     {
+        if (!in_array($type, array(self::TYPE_18, self::TYPE_2_25, self::TYPE_2_50, self::TYPE_2_70, self::TYPE_50_30))) {
+            throw new \InvalidArgumentException("Invalid type");
+        }
+        
         $this->type = $type;
 
         return $this;

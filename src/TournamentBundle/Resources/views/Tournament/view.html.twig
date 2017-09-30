@@ -4,4 +4,10 @@
 
 {% block tournament_content %}    
     <h3>{{ tournament.dateStart|date('d/m/Y') }}</h3>
+    
+    <ul>
+        {% for peloton in tournament.pelotons %}
+            <li><a href="">{{ peloton.startTime|date('H:i') }}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
