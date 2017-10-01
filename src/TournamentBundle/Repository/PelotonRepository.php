@@ -2,6 +2,8 @@
 
 namespace TournamentBundle\Repository;
 
+use TournamentBundle\Entity\Tournament;
+
 /**
  * PelotonRepository
  *
@@ -10,4 +12,15 @@ namespace TournamentBundle\Repository;
  */
 class PelotonRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getPelotons()
+  {
+    $query = $this->createQueryBuilder('a')
+      // Jointure sur l'attribut image
+      ->leftJoin('a.participants', 'p')
+      ->addSelect('p')
+      ->getQuery()
+    ;
+
+    return $query->getResult();
+  }
 }

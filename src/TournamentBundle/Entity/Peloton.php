@@ -53,6 +53,11 @@ class Peloton
      * @ORM\JoinColumn(nullable=false)
      */
     private $tournament;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="TournamentBundle\Entity\Participant", mappedBy="pelotons")
+     */
+    private $participants;
 
 
     /**
@@ -163,5 +168,46 @@ class Peloton
     public function getTournament()
     {
         return $this->tournament;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add participant
+     *
+     * @param \TournamentBundle\Entity\Participant $participant
+     *
+     * @return Peloton
+     */
+    public function addParticipant(\TournamentBundle\Entity\Participant $participant)
+    {
+        $this->participants[] = $participant;
+
+        return $this;
+    }
+
+    /**
+     * Remove participant
+     *
+     * @param \TournamentBundle\Entity\Participant $participant
+     */
+    public function removeParticipant(\TournamentBundle\Entity\Participant $participant)
+    {
+        $this->participants->removeElement($participant);
+    }
+
+    /**
+     * Get participants
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
     }
 }

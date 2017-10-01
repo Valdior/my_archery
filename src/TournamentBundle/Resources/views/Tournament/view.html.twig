@@ -7,7 +7,17 @@
     
     <ul>
         {% for peloton in tournament.pelotons %}
-            <li><a href="">{{ peloton.startTime|date('H:i') }}</a></li>
+            <li><a href="">{{ peloton.startTime|date('H:i') }}</a></li>    
+        {% endfor %}
+    </ul>
+        
+    <h3>Liste des participants</h3>
+    
+    <ul>
+        {% for peloton in tournament.pelotons %}
+        {% for participant in peloton.participants %}
+        <li><a href="">{{ participant.archer.fullName }} | {{ peloton.startTime|date('H:i') }}</a></li>  
+        {% endfor %}
         {% endfor %}
     </ul>
 {% endblock %}

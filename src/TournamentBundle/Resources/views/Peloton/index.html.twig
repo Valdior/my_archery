@@ -1,0 +1,17 @@
+{% extends "TournamentBundle::layout.html.twig" %}
+
+{% block title %}Peloton - {{ parent() }}{% endblock %}
+
+{% block tournament_content %}
+    <h3>Liste des participants</h3>
+    <ul>
+        {% for peloton in pelotons %}                
+        {% for participant in peloton.participants %}
+            
+        <li>
+            <a href="">{{ participant.archer.fullName }} | {{ peloton.startTime|date('H:i') }}</a>
+        </li>
+        {% endfor %}        
+        {% endfor %}
+    </ul>
+{% endblock %}

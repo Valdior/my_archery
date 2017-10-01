@@ -22,6 +22,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton->setStartTime(new \DateTime('08:30:00'));
         $peloton->setTournament($this->getReference('tournoi-itw'));
         
+        $this->addReference('peloton-itw1', $peloton);
         $manager->persist($peloton);        
         
         $peloton = new Peloton();
@@ -30,6 +31,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton->setStartTime(new \DateTime('13:30:00'));
         $peloton->setTournament($this->getReference('tournoi-itw'));
         
+        $this->addReference('peloton-itw2', $peloton);
         $manager->persist($peloton);
         
         $peloton = new Peloton();
@@ -38,6 +40,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton->setStartTime(new \DateTime('08:30:00'));
         $peloton->setTournament($this->getReference('tournoi-lie'));
         
+        $this->addReference('peloton-lie1', $peloton);
         $manager->persist($peloton);
         
         $peloton = new Peloton();
@@ -46,6 +49,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton->setStartTime(new \DateTime('13:30:00'));
         $peloton->setTournament($this->getReference('tournoi-lie'));
         
+        $this->addReference('peloton-lie2', $peloton);
         $manager->persist($peloton);
         
         $peloton = new Peloton();
@@ -54,6 +58,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton->setStartTime(new \DateTime('08:30:00'));
         $peloton->setTournament($this->getReference('tournoi-lie'));
         
+        $this->addReference('peloton-lie3', $peloton);
         $manager->persist($peloton);
         $manager->flush();
     }

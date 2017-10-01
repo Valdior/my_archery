@@ -57,15 +57,40 @@ class Archer
     private $affiliates;
     
     /**
+     * @ORM\OneToMany(targetEntity="TournamentBundle\Entity\Participant", mappedBy="archer")
+     */
+    private $participations;
+    
+    /**
      * @Gedmo\Slug(fields={"lastname"})
      * @ORM\Column(name="slug", type="string", length=50, unique=true)
      */
     private $slug;
+    
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->affiliates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->participations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFullName()
+    {
+        return $this->lastname . ' ' . $this->firstname;
+    }
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -119,16 +144,6 @@ class Archer
     {
         return $this->firstname;
     }
-    
-    /**
-     * Get firstname
-     *
-     * @return string
-     */
-    public function getFullName()
-    {
-        return $this->lastname . ' ' . $this->firstname;
-    }
 
     /**
      * Set category
@@ -177,12 +192,29 @@ class Archer
     {
         return $this->status;
     }
+
     /**
-     * Constructor
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Archer
      */
-    public function __construct()
+    public function setSlug($slug)
     {
-        $this->affiliates = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
@@ -220,26 +252,36 @@ class Archer
     }
 
     /**
-     * Set slug
+     * Add participation
      *
-     * @param string $slug
+     * @param \TournamentBundle\Entity\Participant $participation
      *
      * @return Archer
      */
-    public function setSlug($slug)
+    public function addParticipation(\TournamentBundle\Entity\Participant $participation)
     {
-        $this->slug = $slug;
+        $this->participations[] = $participation;
 
         return $this;
     }
 
     /**
-     * Get slug
+     * Remove participation
      *
-     * @return string
+     * @param \TournamentBundle\Entity\Participant $participation
      */
-    public function getSlug()
+    public function removeParticipation(\TournamentBundle\Entity\Participant $participation)
     {
-        return $this->slug;
+        $this->participations->removeElement($participation);
+    }
+
+    /**
+     * Get participations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParticipations()
+    {
+        return $this->participations;
     }
 }

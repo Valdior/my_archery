@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tournament
 {
+    const TYPE_INDOOR = 'indoor';
+    const TYPE_OUTDOOR = 'outdoor';
+    
     /**
      * @var int
      *
