@@ -41,6 +41,13 @@ class LoadArcherData extends AbstractFixture implements OrderedFixtureInterface
         
         $this->addReference('archer-fh', $archer);
         $manager->persist($archer);
+        
+        $archer = new Archer();
+        $archer->setFirstname("Carmelo");
+        $archer->setLastname('Gentile');
+        
+        $this->addReference('archer-cg', $archer);
+        $manager->persist($archer);
         $manager->flush();
     }
     

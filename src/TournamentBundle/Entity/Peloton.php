@@ -44,7 +44,7 @@ class Peloton
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startTime", type="time")
+     * @ORM\Column(name="startTime", type="date")
      */
     private $startTime;
     

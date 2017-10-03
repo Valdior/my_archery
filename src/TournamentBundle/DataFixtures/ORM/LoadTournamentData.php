@@ -30,6 +30,14 @@ class LoadTournamentData  extends AbstractFixture implements OrderedFixtureInter
         
         $this->addReference('tournoi-lie', $tournament);
         $manager->persist($tournament);
+        
+        $tournament = new Tournament();
+        $tournament->setDateStart(new \DateTime('09/30/2017'));
+        $tournament->setDateEnd(new \DateTime('10/01/2017'));
+        $tournament->setType('indoor');
+        
+        $this->addReference('tournoi-fbg', $tournament);
+        $manager->persist($tournament);
         $manager->flush();
     }
     

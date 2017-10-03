@@ -19,7 +19,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton = new Peloton();
         $peloton->setType(Peloton::TYPE_50_30);
         $peloton->setMaxParticipant("120");
-        $peloton->setStartTime(new \DateTime('08:30:00'));
+        $peloton->setStartTime(new \DateTime('05/21/2017 08:30:00'));
         $peloton->setTournament($this->getReference('tournoi-itw'));
         
         $this->addReference('peloton-itw1', $peloton);
@@ -28,7 +28,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton = new Peloton();
         $peloton->setType(Peloton::TYPE_2_25);
         $peloton->setMaxParticipant(120);
-        $peloton->setStartTime(new \DateTime('13:30:00'));
+        $peloton->setStartTime(new \DateTime('05/21/2017 13:30:00'));
         $peloton->setTournament($this->getReference('tournoi-itw'));
         
         $this->addReference('peloton-itw2', $peloton);
@@ -37,7 +37,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton = new Peloton();
         $peloton->setType(Peloton::TYPE_50_30);
         $peloton->setMaxParticipant("120");
-        $peloton->setStartTime(new \DateTime('08:30:00'));
+        $peloton->setStartTime(new \DateTime('06/17/2017 08:30:00'));
         $peloton->setTournament($this->getReference('tournoi-lie'));
         
         $this->addReference('peloton-lie1', $peloton);
@@ -46,7 +46,7 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton = new Peloton();
         $peloton->setType(Peloton::TYPE_2_25);
         $peloton->setMaxParticipant("120");
-        $peloton->setStartTime(new \DateTime('13:30:00'));
+        $peloton->setStartTime(new \DateTime('06/17/2017 13:30:00'));
         $peloton->setTournament($this->getReference('tournoi-lie'));
         
         $this->addReference('peloton-lie2', $peloton);
@@ -55,10 +55,46 @@ class LoadPelotonData extends AbstractFixture implements OrderedFixtureInterface
         $peloton = new Peloton();
         $peloton->setType(Peloton::TYPE_2_70);
         $peloton->setMaxParticipant("120");
-        $peloton->setStartTime(new \DateTime('08:30:00'));
+        $peloton->setStartTime(new \DateTime('06/18/2017 08:30:00'));
         $peloton->setTournament($this->getReference('tournoi-lie'));
         
         $this->addReference('peloton-lie3', $peloton);
+        $manager->persist($peloton);
+        
+        $peloton = new Peloton();
+        $peloton->setType(Peloton::TYPE_2_18);
+        $peloton->setMaxParticipant("60");
+        $peloton->setStartTime(new \DateTime('09/30/2017 13:30:00'));
+        $peloton->setTournament($this->getReference('tournoi-fbg'));
+        
+        $this->addReference('peloton-fbg1', $peloton);
+        $manager->persist($peloton);
+        
+        $peloton = new Peloton();
+        $peloton->setType(Peloton::TYPE_2_18);
+        $peloton->setMaxParticipant("60");
+        $peloton->setStartTime(new \DateTime('09/30/2017 18:30:00'));
+        $peloton->setTournament($this->getReference('tournoi-fbg'));
+        
+        $this->addReference('peloton-fbg2', $peloton);
+        $manager->persist($peloton);
+        
+        $peloton = new Peloton();
+        $peloton->setType(Peloton::TYPE_2_18);
+        $peloton->setMaxParticipant("60");
+        $peloton->setStartTime(new \DateTime('10/01/2017 08:30:00'));
+        $peloton->setTournament($this->getReference('tournoi-fbg'));
+        
+        $this->addReference('peloton-fbg3', $peloton);
+        $manager->persist($peloton);
+        
+        $peloton = new Peloton();
+        $peloton->setType(Peloton::TYPE_2_18);
+        $peloton->setMaxParticipant("60");
+        $peloton->setStartTime(new \DateTime('10/01/2017 13:30:00'));
+        $peloton->setTournament($this->getReference('tournoi-fbg'));
+        
+        $this->addReference('peloton-fbg4', $peloton);
         $manager->persist($peloton);
         $manager->flush();
     }
