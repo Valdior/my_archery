@@ -1,0 +1,26 @@
+{# empty Twig template #}
+
+{# Ce template n'hérite de personne, tout comme le template inclus avec {{ include() }}. #}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Archer</th>
+            <th>Total</th>
+            <th>10</th>
+            <th>9</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for peloton in tournament.pelotons %} 
+        {% for participant in peloton.participants %} 
+        <tr>
+            <td>{{ participant.participant.fullName }}</td>
+            <td>{{ participant.point }}</td>
+            <td>{{ participant.ten }}</td>
+            <td>{{ participant.nine }}</td>
+        </tr>
+        {% endfor %}  
+        {% endfor %}   
+    </tbody>  
+</table>

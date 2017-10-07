@@ -1,0 +1,15 @@
+tournament_homepage:
+    path:     /
+    defaults: { _controller: TournamentBundle:Tournament:index }
+    
+tournament_view:
+    path:     /{id}
+    defaults: { _controller: TournamentBundle:Tournament:view }    
+    
+peloton_homepage:
+    path:     /{id}/peloton
+    defaults: { _controller: TournamentBundle:Peloton:index }
+
+peloton_view:
+    path:     /peloton/{id}
+    defaults: { _controller: TournamentBundle:Peloton:view }

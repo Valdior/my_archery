@@ -1,0 +1,7 @@
+club:
+    resource: "@ArcheryBundle/Resources/config/routing_club.yml"
+    prefix:   /club
+   
+archer:
+    resource: "@ArcheryBundle/Resources/config/routing_archer.yml"
+    prefix:   /archer

@@ -1,0 +1,7 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    
+    <h1>Hello, {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %} {{ app.user.username }} {% else %} anonyme {% endif %}!</h1>
+
+{% endblock %}
