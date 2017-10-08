@@ -28,33 +28,39 @@ class LoadUserData implements FixtureInterface, ContainerAwareInterface, Ordered
     
     public function load(ObjectManager $manager)
     {
-        $user = new User();
+         $userManager = $this->container->get('fos_user.user_manager');
+         
+        $user = $userManager->createUser();
         $user->setUsername('admin');
-        $user->setSalt(md5(uniqid()));
+//        $user->setSalt(md5(uniqid()));
 
         // the 'security.password_encoder' service requires Symfony 2.6 or higher
-        $encoder = $this->container->get('security.password_encoder');
-        $password = $encoder->encodePassword($user, 'admin');
-        $user->setPassword($password);
+//        $encoder = $this->container->get('security.password_encoder');
+//        $password = $encoder->encodePassword($user, 'admin');        
+//        $user->setPassword($password);
+        $user->setPlainPassword('admin');
         $user->addRole('ROLE_ADMIN');
         $user->setEmail('admin@admin.be');
         $user->setEnabled(true);
 
         $manager->persist($user);
+//        $userManager->updateUser($user, true);
         
-        $user = new User();
+        $user = $userManager->createUser();
         $user->setUsername('user');
-        $user->setSalt(md5(uniqid()));
+//        $user->setSalt(md5(uniqid()));
 
         // the 'security.password_encoder' service requires Symfony 2.6 or higher
-        $encoder = $this->container->get('security.password_encoder');
-        $password = $encoder->encodePassword($user, 'user');
-        $user->setPassword($password);
+//        $encoder = $this->container->get('security.password_encoder');
+//        $password = $encoder->encodePassword($user, 'user');
+//        $user->setPassword($password);
+        $user->setPlainPassword('user');
         $user->setEmail('user@user.be');
         $user->setEnabled(true);
 
-        $manager->persist($user);
-        $manager->flush();
+//        $manager->persist($user);
+//        $manager->flush();
+        $userManager->updateUser($user, true);
     }
     
     public function getOrder()
