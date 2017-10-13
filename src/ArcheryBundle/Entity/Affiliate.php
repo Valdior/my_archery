@@ -24,7 +24,7 @@ class Affiliate
     /**
      * @var int
      *
-     * @ORM\Column(name="registrationNumber", type="integer")
+     * @ORM\Column(name="registrationNumber", type="string")
      */
     private $registrationNumber;
 
@@ -67,7 +67,7 @@ class Affiliate
     /**
      * Set registrationNumber
      *
-     * @param integer $registrationNumber
+     * @param string $registrationNumber
      *
      * @return Affiliate
      */
@@ -81,7 +81,7 @@ class Affiliate
     /**
      * Get registrationNumber
      *
-     * @return integer
+     * @return string
      */
     public function getRegistrationNumber()
     {

@@ -37,7 +37,7 @@ class LoadAffiliateData extends AbstractFixture implements OrderedFixtureInterfa
         $affiliation->setArcher($this->getReference('archer-pm'));
         $affiliation->setClub($this->getReference('cercle-lie'));
         $affiliation->setAffiliatedSince(new \DateTime('10/01/2016'));
-        $affiliation->setRegistrationnumber('403057');
+        $affiliation->setRegistrationnumber('89H01558');
         
         $manager->persist($affiliation);
         
