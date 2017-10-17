@@ -27,7 +27,8 @@ class AppKernel extends Kernel
             new CoreBundle\CoreBundle(),
             new ArcheryBundle\ArcheryBundle(),
             new TournamentBundle\TournamentBundle(),
-            new LocationBundle\LocationBundle(),            
+            new LocationBundle\LocationBundle(),
+            new ApiBundle\ApiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
