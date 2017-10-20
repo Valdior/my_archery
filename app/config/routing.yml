@@ -17,10 +17,12 @@ tournament:
     resource: "@TournamentBundle/Resources/config/routing.yml"
     prefix:   /tournament
     
-app:
-    resource: "@ApiBundle/Controller/"
-    type: rest
-    prefix: /api   
+
+rest : 
+  type : rest 
+  resource : "routing_rest.yml"
+  prefix : /api    
+
 
 api_login_check:
     path: /api/login_check
