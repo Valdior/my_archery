@@ -21,6 +21,5 @@ class UserRestController extends Controller
 
         $view->setData($user);
         return $view;
-        //return new JsonResponse($user);
     }
 }

@@ -1,0 +1,7 @@
+clubs : 
+  type: rest
+  controller:   ::getClubsAction
+  #defaults: { _controller: ArcheryBundle:ClubRest:getClubs }  
+  resource:     "ArcheryBundle:ClubRest"
+  methods: [GET]
+  name_prefix:  api_

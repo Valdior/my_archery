@@ -5,12 +5,18 @@ namespace ArcheryBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Club
  *
  * @ORM\Table(name="club")
  * @ORM\Entity(repositoryClass="ArcheryBundle\Repository\ClubRepository")
+ * 
+ * @ExclusionPolicy("all") 
  */
 class Club
 {
@@ -27,6 +33,8 @@ class Club
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * 
+     * @Expose
      */
     private $name;
 
@@ -34,6 +42,8 @@ class Club
      * @var string
      *
      * @ORM\Column(name="acronym", type="string", length=10, unique=true)
+     * 
+     * @Expose
      */
     private $acronym;
 
@@ -41,17 +51,23 @@ class Club
      * @var int
      *
      * @ORM\Column(name="number", type="integer", unique=true)
+     * 
+     * @Expose
      */
     private $number;
     
     /**
      * @Gedmo\Slug(fields={"number", "acronym"})
      * @ORM\Column(name="slug", type="string", length=20, unique=true)
+     * 
+     * @Expose
      */
     private $slug;
     
     /**
      * @ORM\OneToMany(targetEntity="ArcheryBundle\Entity\Affiliate", mappedBy="club")
+     * 
+     * @Expose
      */
     private $membres;   
 
