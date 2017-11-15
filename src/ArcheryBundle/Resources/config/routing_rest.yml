@@ -5,3 +5,19 @@ clubs :
   resource:     "ArcheryBundle:ClubRest"
   methods: [GET]
   name_prefix:  api_
+
+club : 
+  type: rest
+  controller:   ::getClubAction
+  #defaults: { _controller: ArcheryBundle:ClubRest:getClubs }  
+  resource:     "ArcheryBundle:ClubRest"
+  methods: [GET]
+  name_prefix:  api_
+
+archer : 
+  type: rest
+  controller:   ::getArcherAction
+  #defaults: { _controller: ArcheryBundle:ClubRest:getClubs }  
+  resource:     "ArcheryBundle:ArcherRest"
+  methods: [GET]
+  name_prefix:  api_  

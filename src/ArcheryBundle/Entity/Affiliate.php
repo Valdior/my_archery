@@ -22,7 +22,7 @@ class Affiliate
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
      * @ORM\Column(name="registrationNumber", type="string")
      */
