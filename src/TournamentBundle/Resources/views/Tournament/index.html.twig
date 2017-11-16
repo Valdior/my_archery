@@ -11,4 +11,7 @@
         </li>
         {% endfor %}
     </ul>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-primary" href="{{ path('tournament_add') }}">Youhou t'es admin</a>
+    {% endif %}
 {% endblock %}

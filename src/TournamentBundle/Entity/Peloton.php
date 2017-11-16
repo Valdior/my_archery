@@ -58,6 +58,11 @@ class Peloton
      * @ORM\OneToMany(targetEntity="TournamentBundle\Entity\Participant", mappedBy="peloton")
      */
     private $participants;
+
+    public static function getTypeList()
+    {
+        return [self::TYPE_18, self::TYPE_2_25, self::TYPE_2_50, self::TYPE_2_70, self::TYPE_50_30];
+    }
     
     /**
      * Constructor
@@ -65,6 +70,8 @@ class Peloton
     public function __construct()
     {
         $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->startTime    = new \Datetime();
+        $this->type = 0;
     }
 
 
@@ -114,8 +121,8 @@ class Peloton
         if (!in_array($type, array(self::TYPE_18, self::TYPE_2_25, self::TYPE_2_50, self::TYPE_2_70, self::TYPE_50_30))) {
             throw new \InvalidArgumentException("Invalid type");
         }
-        
-        $this->type = $type;
+
+        $this->type = array_search($type, self::getTypeList());
 
         return $this;
     }
@@ -126,8 +133,8 @@ class Peloton
      * @return string
      */
     public function getType()
-    {
-        return $this->type;
+    {       
+        return self::getTypeList()[$this->type]; //array_search(, self::getTypeList());
     }
 
     /**

@@ -12,18 +12,7 @@ security:
         fos_userbundle:
             id: fos_user.user_provider.username
 
-    firewalls:
-#        main:
-#            pattern: ^/
-#            form_login:
-#                provider: fos_userbundle
-#                csrf_token_generator: security.csrf.token_manager
-                # if you are using Symfony < 2.8, use the following config instead:
-                # csrf_provider: form.csrf_provider
-
-#            logout:       true
-#            anonymous:    true
-        
+    firewalls:        
         login:
             pattern:  ^/api/login
             stateless: true
@@ -41,6 +30,17 @@ security:
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator   
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+
+            logout:       true
+            anonymous:    true
     access_control:
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }

@@ -50,6 +50,16 @@ class Tournament
      */
     private $pelotons; 
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->pelotons     = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateStart    = new \Datetime();
+        $this->dateEnd      = new \Datetime();
+    }
+
 
     /**
      * Get id
@@ -131,14 +141,7 @@ class Tournament
     public function getType()
     {
         return $this->type;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->pelotons = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    }    
 
     /**
      * Add peloton

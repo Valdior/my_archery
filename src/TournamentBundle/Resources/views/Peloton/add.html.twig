@@ -1,0 +1,16 @@
+{# src/TournamentBundle/Resources/views/Peloton/add.html.twig #}
+
+{% extends "TournamentBundle::layout.html.twig" %}
+
+{% block body %}
+
+  <h2>Ajouter un peloton</h2>
+
+  {{ include("TournamentBundle:Peloton:form.html.twig") }}
+
+  <p>
+    Attention : ce peloton sera ajoutée directement
+    sur la page de la compétition après validation du formulaire.
+  </p>
+
+{% endblock %}

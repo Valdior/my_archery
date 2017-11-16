@@ -1,0 +1,16 @@
+{# src/TournamentBundle/Resources/views/Tournament/add.html.twig #}
+
+{% extends "TournamentBundle::layout.html.twig" %}
+
+{% block body %}
+
+  <h2>Ajouter une compétition</h2>
+
+  {{ include("TournamentBundle:Tournament:form.html.twig") }}
+
+  <p>
+    Attention : cette compétition sera ajoutée directement
+    sur la page des compétitions après validation du formulaire.
+  </p>
+
+{% endblock %}
