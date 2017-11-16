@@ -24,7 +24,7 @@ class PelotonType extends AbstractType
                     'choices'  => Peloton::getTypeList()
                 ))
                 ->add('startTime',      DateTimeType::class)
-                ->add('save',      SubmitType::class);;
+                ->add('save',      SubmitType::class);
     }
     
     /**

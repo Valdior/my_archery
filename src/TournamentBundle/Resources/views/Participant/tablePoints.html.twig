@@ -5,6 +5,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>Peloton</th>
             <th>Archer</th>
             <th>Total</th>
             <th>10</th>
@@ -12,9 +13,21 @@
         </tr>
     </thead>
     <tbody>
+    {% if tournament is not defined %}
+        {% for participant in peloton.participants %} 
+        <tr>
+            <td>{{ peloton.startTime|date('d/m/Y H:i') }}</td>
+            <td>{{ participant.participant.fullName }}</td>
+            <td>{{ participant.point }}</td>
+            <td>{{ participant.ten }}</td>
+            <td>{{ participant.nine }}</td>
+        </tr>
+        {% endfor %}  
+    {% else %}
         {% for peloton in tournament.pelotons %} 
         {% for participant in peloton.participants %} 
         <tr>
+            <td>{{ peloton.startTime|date('d/m/Y H:i') }}</td>
             <td>{{ participant.participant.fullName }}</td>
             <td>{{ participant.point }}</td>
             <td>{{ participant.ten }}</td>
@@ -22,5 +35,6 @@
         </tr>
         {% endfor %}  
         {% endfor %}   
+    {% endif %}
     </tbody>  
 </table>

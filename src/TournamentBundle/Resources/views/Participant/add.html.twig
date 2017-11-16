@@ -1,0 +1,16 @@
+{# src/TournamentBundle/Resources/views/Peloton/add.html.twig #}
+
+{% extends "TournamentBundle::layout.html.twig" %}
+
+{% block body %}
+
+  <h2>Ajouter un participant</h2>
+
+  {{ include("TournamentBundle:Participant:form.html.twig") }}
+
+  <p>
+    Attention : ce participant sera ajoutée directement
+    sur la page du peloton après validation du formulaire.
+  </p>
+
+{% endblock %}

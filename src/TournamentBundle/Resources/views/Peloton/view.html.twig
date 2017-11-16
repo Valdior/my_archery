@@ -7,8 +7,9 @@
 
     <h3>
     Liste des participants
-    {% if is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-primary" >Ajouter un particpant</a>
+    {% if is_granted('ROLE_ADMIN') %} 
+        <a class="btn btn-primary"  href="{{ path('participant_add', {'id': peloton.id}) }} ">Ajouter un participant</a>
     {% endif %}
     </h3>
+    {{ include("TournamentBundle:Participant:tablePoints.html.twig") }}
 {% endblock %}

@@ -10,4 +10,19 @@ namespace ArcheryBundle\Repository;
  */
 class ArcherRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getNotRegistered($id)
+    {
+        $subQueryBuilder = $this->createQueryBuilder('c');
+        $subQuery = $subQueryBuilder
+            ->select('c.id')
+            ->leftJoin('c.participations', 'part')
+            ->where('part.peloton = :id_peloton')                
+            ;
+
+        $query = $this->createQueryBuilder('c3');
+        $query->where($query->expr()->notIn('c3.id', $subQuery->getDQL()))
+                ->setParameter('id_peloton', $id);      
+
+        return $query;
+    }
 }
