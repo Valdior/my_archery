@@ -10,6 +10,7 @@
             <th>Total</th>
             <th>10</th>
             <th>9</th>
+            <th>action</th>
         </tr>
     </thead>
     <tbody>
@@ -17,10 +18,11 @@
         {% for participant in peloton.participants %} 
         <tr>
             <td>{{ peloton.startTime|date('d/m/Y H:i') }}</td>
-            <td>{{ participant.participant.fullName }}</td>
+            <td><a href="{{ path('archer_view', {'slug': participant.participant.slug }) }}">{{ participant.participant.fullName }}</a></td>
             <td>{{ participant.point }}</td>
             <td>{{ participant.ten }}</td>
             <td>{{ participant.nine }}</td>
+            <td><a href="{{ path('participant_edit', {'id': participant.id }) }}">edit</a></td>
         </tr>
         {% endfor %}  
     {% else %}
@@ -32,6 +34,7 @@
             <td>{{ participant.point }}</td>
             <td>{{ participant.ten }}</td>
             <td>{{ participant.nine }}</td>
+            <td>edit</td>
         </tr>
         {% endfor %}  
         {% endfor %}   

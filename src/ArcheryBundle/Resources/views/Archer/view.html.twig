@@ -13,6 +13,7 @@
                     <th>Organisateur</th>
                     <th>Date</th>
                     <th>Points</th>
+                    <th>Action<th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                     <td><a href="{{ path('tournament_view', {'id': participation.peloton.tournament.id}) }}">{{ participation.peloton.tournament.dateStart|date("d/m/Y") }}</a></td>
                     <td>{{ participation.peloton.startTime|date("d/m/Y H:i") }}</td>   
                     <td>{{ participation.point }}</td>   
+                    <td><a href="{{ path('participant_edit', {'id': participation.id }) }}">edit</a></td>
                 </tr>  
                 {% endfor %}
             </tbody>

@@ -24,4 +24,8 @@ peloton_view:
 
 participant_add:
     path:     /peloton/{id}/add
-    defaults: { _controller: TournamentBundle:Participant:add }    
+    defaults: { _controller: TournamentBundle:Participant:add }
+
+participant_edit:
+    path:     /participant/{id}
+    defaults: { _controller: TournamentBundle:Participant:edit }
