@@ -6,8 +6,12 @@
     <h3>Liste des compétitions</h3>
     <ul>
         {% for tournament in tournaments %}
-        <li>
-            <a href="{{ path('tournament_view', {'id': tournament.id}) }}">{{ tournament.dateStart|date('d/m/Y') }}</a>
+        <li>            
+            <a href="{{ path('tournament_view', {'id': tournament.id}) }}">
+            {% if tournament.organisateur is not null %}
+            {{ tournament.organisateur.name }}
+            {% endif %}            
+            </a> Le {{ tournament.dateStart|date('d/m/Y') }} au {{ tournament.dateEnd|date('d/m/Y') }}
         </li>
         {% endfor %}
     </ul>

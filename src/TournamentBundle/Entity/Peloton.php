@@ -118,7 +118,7 @@ class Peloton
      */
     public function setType($type)
     {
-        if (!in_array($type, array(self::TYPE_18, self::TYPE_2_25, self::TYPE_2_50, self::TYPE_2_70, self::TYPE_50_30))) {
+        if (!in_array($type, self::getTypeList())) {
             throw new \InvalidArgumentException("Invalid type");
         }
 
@@ -134,7 +134,7 @@ class Peloton
      */
     public function getType()
     {       
-        return self::getTypeList()[$this->type]; //array_search(, self::getTypeList());
+        return self::getTypeList()[$this->type];
     }
 
     /**

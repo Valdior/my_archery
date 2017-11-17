@@ -69,7 +69,23 @@ class Club
      * 
      * @Expose
      */
-    private $membres;   
+    private $membres;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TournamentBundle\Entity\Tournament", mappedBy="organisateur")
+     * 
+     * @Expose
+     */
+    private $tournaments;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->membres = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tournaments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -175,14 +191,7 @@ class Club
     public function getSlug()
     {
         return $this->slug;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->membres = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    }    
 
     /**
      * Add membre
@@ -221,5 +230,39 @@ class Club
     public function getFullName()
     {
         return $this->number . ' - ' . $this->acronym . ' - ' . $this->name;
+    }
+
+    /**
+     * Add tournament
+     *
+     * @param \TournamentBundle\Entity\Tournament $tournament
+     *
+     * @return Club
+     */
+    public function addTournament(\TournamentBundle\Entity\Tournament $tournament)
+    {
+        $this->tournaments[] = $tournament;
+
+        return $this;
+    }
+
+    /**
+     * Remove tournament
+     *
+     * @param \TournamentBundle\Entity\Tournament $tournament
+     */
+    public function removeTournament(\TournamentBundle\Entity\Tournament $tournament)
+    {
+        $this->tournaments->removeElement($tournament);
+    }
+
+    /**
+     * Get tournaments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTournaments()
+    {
+        return $this->tournaments;
     }
 }

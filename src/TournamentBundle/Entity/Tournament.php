@@ -41,14 +41,25 @@ class Tournament
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", columnDefinition="enum('indoor', 'outdoor')")
+     * @ORM\Column(name="type", type="string")
      */
     private $type;
     
     /**
      * @ORM\OneToMany(targetEntity="TournamentBundle\Entity\Peloton", mappedBy="tournament")
      */
-    private $pelotons; 
+    private $pelotons;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ArcheryBundle\Entity\Club", inversedBy="tournaments")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $organisateur;
+
+    public static function getTypeList()
+    {
+        return [self::TYPE_INDOOR, self::TYPE_OUTDOOR];
+    }
 
     /**
      * Constructor
@@ -128,7 +139,11 @@ class Tournament
      */
     public function setType($type)
     {
-        $this->type = $type;
+        if (!in_array($type, self::getTypeList())) {
+            throw new \InvalidArgumentException("Invalid type");
+        }
+
+        $this->type = array_search($type, self::getTypeList());
 
         return $this;
     }
@@ -140,7 +155,7 @@ class Tournament
      */
     public function getType()
     {
-        return $this->type;
+        return self::getTypeList()[$this->type]; 
     }    
 
     /**
@@ -175,5 +190,29 @@ class Tournament
     public function getPelotons()
     {
         return $this->pelotons;
+    }
+
+    /**
+     * Set organisateur
+     *
+     * @param \ArcheryBundle\Entity\Club $organisateur
+     *
+     * @return Tournament
+     */
+    public function setOrganisateur(\ArcheryBundle\Entity\Club $organisateur = null)
+    {
+        $this->organisateur = $organisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get organisateur
+     *
+     * @return \ArcheryBundle\Entity\Club
+     */
+    public function getOrganisateur()
+    {
+        return $this->organisateur;
     }
 }
