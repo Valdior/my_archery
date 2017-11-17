@@ -3,6 +3,7 @@
 namespace TournamentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Peloton
@@ -31,13 +32,17 @@ class Peloton
      * @var int
      *
      * @ORM\Column(name="maxParticipant", type="integer")
+     * @Assert\Type("integer")
+     * @Assert\GreaterThanOrEqual("0")
      */
     private $maxParticipant;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", columnDefinition="enum('2x70', '2x50', '50/30', '2x25', '18')")
+     * @ORM\Column(name="type", type="string")
+     * @Assert\Type("string")
+     * @Assert\NotBlank()
      */
     private $type;
 
@@ -45,17 +50,20 @@ class Peloton
      * @var \DateTime
      *
      * @ORM\Column(name="startTime", type="datetime")
+     * @Assert\DateTime()
      */
     private $startTime;
     
     /**
      * @ORM\ManyToOne(targetEntity="TournamentBundle\Entity\Tournament", inversedBy="pelotons", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $tournament;
     
     /**
      * @ORM\OneToMany(targetEntity="TournamentBundle\Entity\Participant", mappedBy="peloton")
+     * @Assert\Valid()
      */
     private $participants;
 

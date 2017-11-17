@@ -3,6 +3,7 @@
 namespace TournamentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Participant
@@ -25,6 +26,8 @@ class Participant
      * @var int
      *
      * @ORM\Column(name="point", type="integer")
+     * @Assert\Type("integer")
+     * @Assert\GreaterThanOrEqual("0")
      */
     private $point;
 
@@ -32,6 +35,8 @@ class Participant
      * @var int
      *
      * @ORM\Column(name="x", type="integer", nullable=true)
+     * @Assert\Type("integer")
+     * @Assert\GreaterThanOrEqual("0")
      */
     private $x;
 
@@ -39,6 +44,8 @@ class Participant
      * @var int
      *
      * @ORM\Column(name="ten", type="integer")
+     * @Assert\Type("integer")
+     * @Assert\GreaterThanOrEqual("0")
      */
     private $ten;
 
@@ -46,6 +53,8 @@ class Participant
      * @var int
      *
      * @ORM\Column(name="nine", type="integer", nullable=true)
+     * @Assert\Type("integer")
+     * @Assert\GreaterThanOrEqual("0")
      */
     private $nine;
     
@@ -53,6 +62,7 @@ class Participant
      * @var int
      *
      * @ORM\Column(name="isForfait", type="boolean")
+     * @Assert\Type("bool")
      */
     private $isForfait;
     
