@@ -60,6 +60,11 @@ class Archer
      * @ORM\OneToMany(targetEntity="TournamentBundle\Entity\Participant", mappedBy="participant")
      */
     private $participations;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ArcheryBundle\Entity\Archer", mappedBy="archer")
+     */
+    private $owners;
     
     /**
      * @Gedmo\Slug(fields={"lastname"})
@@ -75,6 +80,7 @@ class Archer
     {
         $this->affiliates = new \Doctrine\Common\Collections\ArrayCollection();
         $this->participations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->owners = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -283,5 +289,39 @@ class Archer
     public function getParticipations()
     {
         return $this->participations;
+    }
+
+    /**
+     * Add owner
+     *
+     * @param \ArcheryBundle\Entity\Archer $owner
+     *
+     * @return Archer
+     */
+    public function addOwner(\ArcheryBundle\Entity\Archer $owner)
+    {
+        $this->owners[] = $owner;
+
+        return $this;
+    }
+
+    /**
+     * Remove owner
+     *
+     * @param \ArcheryBundle\Entity\Archer $owner
+     */
+    public function removeOwner(\ArcheryBundle\Entity\Archer $owner)
+    {
+        $this->owners->removeElement($owner);
+    }
+
+    /**
+     * Get owners
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getOwners()
+    {
+        return $this->owners;
     }
 }
