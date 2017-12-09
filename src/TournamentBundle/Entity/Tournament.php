@@ -3,6 +3,7 @@
 namespace TournamentBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Tournament
@@ -42,6 +43,8 @@ class Tournament
      * @var string
      *
      * @ORM\Column(name="type", type="string")
+     * @Assert\Type("string")
+     * @Assert\NotBlank()
      */
     private $type;
     
@@ -69,6 +72,7 @@ class Tournament
         $this->pelotons     = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateStart    = new \Datetime();
         $this->dateEnd      = new \Datetime();
+        $this->type = 0;
     }
 
 

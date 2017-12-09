@@ -21,7 +21,7 @@ class PelotonType extends AbstractType
     {
         $builder->add('maxParticipant', NumberType::class)
                 ->add('type',           ChoiceType::class, array(
-                    'choices'  => Peloton::getTypeList()
+                    'choices'  => Peloton::getTypeList(),
                 ))
                 ->add('startTime',      DateTimeType::class)
                 ->add('save',      SubmitType::class);

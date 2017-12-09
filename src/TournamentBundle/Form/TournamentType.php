@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use TournamentBundle\Entity\Tournament;
 
 class TournamentType extends AbstractType
 {
@@ -22,10 +23,7 @@ class TournamentType extends AbstractType
         $builder->add('dateStart',      DateType::class)
                 ->add('dateEnd',        DateType::class)
                 ->add('type',           ChoiceType::class, array(
-                    'choices'  => array(
-                        'Outdoor' => 'outdoor',
-                        'Indoor' => 'indoor'
-                    ),
+                    'choices'  => Tournament::getTypeList(),
                 ))
                 ->add('save',      SubmitType::class);
     }
