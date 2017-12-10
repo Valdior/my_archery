@@ -5,12 +5,12 @@ namespace ArcheryBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Owner
+ * Supervisor
  *
- * @ORM\Table(name="owner")
- * @ORM\Entity(repositoryClass="ArcheryBundle\Repository\OwnerRepository")
+ * @ORM\Table(name="supervisor")
+ * @ORM\Entity(repositoryClass="ArcheryBundle\Repository\SupervisorRepository")
  */
-class Owner
+class Supervisor
 {
     const PENDING = 'Pending';
     const ACCEPT = 'Accept';

@@ -40,14 +40,15 @@ class User extends BaseUser
     protected $firstname;
 
     /**
-     * @ORM\OneToMany(targetEntity="ArcheryBundle\Entity\Owner", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="ArcheryBundle\Entity\Supervisor", mappedBy="user")
      */
-    private $owners;
+    private $supervisors;
 
     public function __construct()
     {
         parent::__construct();
         // your own logic
+        $this->supervisors = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -99,36 +100,36 @@ class User extends BaseUser
     }
 
     /**
-     * Add owner
+     * Add supervisor
      *
-     * @param \ArcheryBundle\Entity\Owner $owner
+     * @param \ArcheryBundle\Entity\Supervisor $supervisor
      *
      * @return User
      */
-    public function addOwner(\ArcheryBundle\Entity\Owner $owner)
+    public function addSupervisor(\ArcheryBundle\Entity\Supervisor $supervisor)
     {
-        $this->owners[] = $owner;
+        $this->supervisors[] = $supervisor;
 
         return $this;
     }
 
     /**
-     * Remove owner
+     * Remove supervisor
      *
-     * @param \ArcheryBundle\Entity\Owner $owner
+     * @param \ArcheryBundle\Entity\Supervisor $supervisor
      */
-    public function removeOwner(\ArcheryBundle\Entity\Owner $owner)
+    public function removeSupervisor(\ArcheryBundle\Entity\Supervisor $supervisor)
     {
-        $this->owners->removeElement($owner);
+        $this->supervisors->removeElement($supervisor);
     }
 
     /**
-     * Get owners
+     * Get supervisors
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getOwners()
+    public function getSupervisors()
     {
-        return $this->owners;
+        return $this->supervisors;
     }
 }
