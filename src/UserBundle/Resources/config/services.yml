@@ -2,3 +2,7 @@ services:
 #    core.example:
 #        class: CoreBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    user.form.profile:
+        class: UserBundle\Form\ProfileType
+        tags:
+            - { name: form.type, alias: userbundle_profile }

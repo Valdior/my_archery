@@ -96,6 +96,9 @@ fos_user:
             from_email:
                 address:        resetting@example.com
                 sender_name:    Demo Resetting
+    profile:
+        form:
+            type: userbundle_profile
         
 fos_rest:
     param_fetcher_listener: true
